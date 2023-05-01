@@ -1,0 +1,86 @@
+.titlePage {
+    font-size: 27px;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.formWrapper {
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    background-color: rgb(231, 230, 230);
+    /* box-shadow: 1px 1px 3px 3px #7700a5; */
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto;
+}
+
+.formGroup {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.titleForm {
+    font-size: 25px;
+    margin-bottom: 1.5rem;
+}
+
+.label{
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+}
+
+.textarea {
+    width: 100%;
+    height: 5rem;
+    resize: vertical;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #7700a5;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #5a017e;
+}
+
+.errorMsg {
+    color: #ff6666;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.error {
+    border: 2px solid #ff6666;
+}

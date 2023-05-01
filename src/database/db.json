@@ -1,0 +1,13 @@
+{
+  "informacoes": [
+    {
+      "id": 1,
+      "foto": "https://github.com/wicthorsilva.png",
+      "nome": "Wicthor Dev",
+      "cargo": "Front-End ",
+      "resumo": "Meu nome Wicthor, estou me formando em análise e desenvolvimento de sistemas, tenho conhecimento em desing gráfico e marketing digital.\nBusco expandir meus conhecimentos profissionais e avançar nesse mundo de desenvolvimento de sistemas."
+    }
+  ],
+  "experiencias": [],
+  "projetos": []
+}

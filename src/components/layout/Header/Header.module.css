@@ -1,0 +1,15 @@
+.header{
+    background-color: #7700a5;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    margin-right: 1rem;
+    margin-left: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    justify-content: space-evenly;
+}
