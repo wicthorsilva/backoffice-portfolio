@@ -7,7 +7,7 @@ import styles from "./Cadastrarinformacoes.module.css";
 
 import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
-import { Informacoes, createInformacoes, getInformacoes } from "../../../services/informacoesService";
+import { Informacoes, updateInformacoes, getInformacoes } from "../../../services/informacoesService";
 import CardInformacoes from "./CardInformacoes/CardInformacoes";
 
 
@@ -45,7 +45,7 @@ const CadastrarInformacoes: React.FC = () => {
 
     const onSubmit = async (values: Informacoes, {resetForm}: {resetForm: () => void}) => {
         try {
-            await createInformacoes(values);
+            await updateInformacoes(values);
             setInformacoes(values);
             console.log(values);
         resetForm();
@@ -58,6 +58,17 @@ const CadastrarInformacoes: React.FC = () => {
         
     };
 
+    const handleDelete = async () => {
+        try {
+            await updateInformacoes(initialValues);
+            setInformacoes(initialValues);
+            alert('Informações deletadas com sucesso');
+        } catch (error) {
+            console.error('Erro ao deletar informações:', error);
+            alert ('Ocorreu um erro ao deletar as informações. Tente novamente')
+        }
+    };
+
     return (
         <main>
 
@@ -66,7 +77,7 @@ const CadastrarInformacoes: React.FC = () => {
             <div className={styles.formWrapper}>
 
 
-                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+                <Formik initialValues={informacoes} enableReinitialize={true} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {({errors, touched}) => (
                     <Form className={styles.form}>
 
@@ -107,7 +118,14 @@ const CadastrarInformacoes: React.FC = () => {
                     )}
                 </Formik>
 
-                <CardInformacoes informacoes={informacoes}/>
+                <div className={styles.cardContainer}>
+                    <CardInformacoes informacoes={informacoes}/>
+                    <button 
+                    type="button" 
+                    onClick={handleDelete} 
+                    className={`${styles.button} ${styles.deleteButton}`}>Deletar
+                    </button>
+                </div>
             </div>
         </main>
     );

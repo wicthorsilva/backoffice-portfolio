@@ -1,32 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import styles from "./ListaExperiencia.module.css";
+import {Experiencia, deleteExperiencia, getExperiencias, updateExperiencia } from "../../../services/experienciaService";
 
-interface Experiencia {
-    titulo: string;
-    descricao: string;
-    tipo: string;
-    anoInicio: string;
-    anoFim: string;
-}
+
 
 const ListaExperiencia: React.FC = () => {
 
-    const [experiencia, setExperiencia] = React.useState<Experiencia[]> ([
-        {
-            titulo:"Treinamento de CSS",
-            descricao: "Curso intensivo promovido pelo Comeia Academy",
-            tipo: "Estudo",
-            anoInicio: "2023",
-            anoFim: "2023",
-        }
-    ]);
+    const navigate = useNavigate();
 
-    const handleEdit = (experiencia: Experiencia) => {
+    const [experiencia, setExperiencia] = React.useState<Experiencia[]>([]);
+
+    const fetchExperiencias = async () => {
+        try {
+            const experiencia = await getExperiencias();
+            setExperiencia(experiencia);
+        } catch (error) {
+            console.log('Erro ao buscar experiencia', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchExperiencias();
+    }, []);
+
+    const handleEdit = async (experiencia: Experiencia) => {
+        navigate ("/curriculo/experiencia/cadastro", {state: experiencia})
         // lógica para edição "index"
     };
 
-    const handleDelete = (index: number) => {
+    const handleDelete = async(id: number) => {
+        try {
+            await deleteExperiencia(id);
+            fetchExperiencias();
+            alert ("Experiência excluida com sucesso")
+        } catch (error) {
+            console.log('Error ao excluir experiência', error);
+            alert("Ocorreu um erro ao excluir a experiência");
+        }
         //logica;
     };
 
@@ -52,7 +65,7 @@ const ListaExperiencia: React.FC = () => {
                         <td>{experiencia.anoFim}</td>
                         <td>
                             <button onClick={()=> handleEdit(experiencia)}>Editar</button>
-                            <button onClick={()=> handleDelete(index)}>Excluir</button>
+                            <button onClick={()=> handleDelete(experiencia.id)}>Excluir</button>
                         </td>
                     </tr>
                 ))}

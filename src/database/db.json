@@ -1,13 +1,39 @@
 {
+
+  "usuarios": [
+    {
+      "id": 1,
+      "email":"luizwicthor@gmail.com",
+      "password": "654321"
+    }
+  ],
+
   "informacoes": [
     {
       "id": 1,
       "foto": "https://github.com/wicthorsilva.png",
       "nome": "Wicthor Dev",
       "cargo": "Front-End ",
-      "resumo": "Meu nome Wicthor, estou me formando em análise e desenvolvimento de sistemas, tenho conhecimento em desing gráfico e marketing digital.\nBusco expandir meus conhecimentos profissionais e avançar nesse mundo de desenvolvimento de sistemas."
+      "resumo": "Meu nome Wicthor, estou me formando em análise e desenvolvimento de sistemas, tenho conhecimento em desing gráfico e marketing digital. Busco expandir meus conhecimentos profissionais e avançar nesse mundo de desenvolvimento de sistemas."
     }
   ],
-  "experiencias": [],
+  "experiencias": [
+    {
+      "id": 1,
+      "titulo": "Desenvolvedor Front-End",
+      "descricao": "Ainda Junior",
+      "tipo": "profissional",
+      "anoInicio": "2022",
+      "anoFim": "2023"
+    },
+    {
+      "id": 2,
+      "titulo": "Desenvolvimento web",
+      "descricao": "Cursando ADS",
+      "tipo": "academico",
+      "anoInicio": "2022",
+      "anoFim": "2023"
+    }
+  ],
   "projetos": []
 }

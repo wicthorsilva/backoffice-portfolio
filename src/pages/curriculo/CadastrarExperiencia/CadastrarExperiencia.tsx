@@ -1,7 +1,7 @@
 import React from "react";
 
 import * as Yup from "yup";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 
 import styles from "./CadastrarExperiencia.module.css";
@@ -9,17 +9,16 @@ import Input from "../../../components/forms/Input/Input";
 import Textarea from "../../../components/forms/Textarea/Textarea";
 import Select from "../../../components/forms/Select";
 
-interface FormValues {
-    titulo: string;
-    descricao: string;
-    tipo: string;
-    anoInicio: string;
-    anoFim: string;
-}
+import { Experiencia, createOrUpdateExperiencia } from "../../../services/experienciaService";
 
 const CadastrarExperiencia: React.FC = () => {
 
-    const initialValues: FormValues = {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const experiencia = location.state as Experiencia;
+
+    const initialValues: Experiencia = {
+        id: 0,
         titulo: "",
         descricao: "",
         tipo: "",
@@ -29,21 +28,28 @@ const CadastrarExperiencia: React.FC = () => {
 
     const validationSchema = Yup.object().shape({
         titulo: Yup.string().required('Campo obrigatório'),
-        descricao: Yup.string().required('Campo obrigatório'),
+        descricao: Yup.string(),
         tipo: Yup.string().required('Campo obrigatório'),
         anoInicio: Yup.number().required('Campo obrigatório').typeError("Digite nùmeros"),
         anoFim: Yup.number().required('Campo obrigatório') .typeError("Digite nùmeros"),
     });
 
-    const onSubmit = (values: FormValues, {resetForm}: {resetForm: () => void}) => {
-        console.log(values);
-        resetForm();
-        alert ('Formulário enviado com sucesso!');
+    const onSubmit = async (values: Experiencia, {resetForm}: {resetForm: () => void}) => {
+        try {
+            await createOrUpdateExperiencia(values);  //logica
+            console.log(values);
+            resetForm();
+            navigate ("/curriculo/experiencia/lista")
+            alert ('Formulário enviado com sucesso!');
+        } catch (error) {
+            console.log(error);
+            alert('Ocorreu um erro ao enviar o formulário')
+        }
     };
 
     return (
         <div className={styles.formWrapper}>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
+            <Formik initialValues={experiencia || initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
             >
                 {({ errors, touched }) => (
                     <Form className={styles.form}>
@@ -87,7 +93,7 @@ const CadastrarExperiencia: React.FC = () => {
                           touched={touched.descricao}
                         />
 
-                        <button type="submit" className={styles.button}>Cadastrar</button>
+                        <button type="submit" className={styles.button}>Salvar</button>
                     </Form>
                 )}
 
