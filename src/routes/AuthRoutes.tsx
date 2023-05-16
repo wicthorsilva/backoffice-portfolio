@@ -1,16 +1,19 @@
 import React from "react";
 
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import CadastrarInformacoes from "../pages/curriculo/CadastrarInformacoes";
 import CadastrarExperiencia from "../pages/curriculo/CadastrarExperiencia";
-import ListaProjetos from "../pages/projetos/ListaProjetos";
 import ListaExperiencia from "../pages/curriculo/ListaExperiencia";
-import ProjetoCadastro from "../pages/projetos/ProjetoCadastro";
+import ListProjects from "../pages/projetos/ListProjects";
+import ManipulateProject from "../pages/projetos/ManipulateProject";
 import Home from "../pages/home";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 
 import { Layout } from "../components/layout";
 import { useAuth } from "../contexts/AuthContext";
+
 
 
 const AppRoutes: React.FC = () => {
@@ -31,8 +34,9 @@ const AppRoutes: React.FC = () => {
                 <Route path="/curriculo/informacoes/cadastro" element={<CadastrarInformacoes/>}/>
                 <Route path="/curriculo/experiencia/cadastro" element={<CadastrarExperiencia/>}/>
                 <Route path="/curriculo/experiencia/lista" element={<ListaExperiencia/>}/>
-                <Route path="/projetos/cadastro" element={<ProjetoCadastro/>}/>
-                <Route path="/projetos/lista" element={<ListaProjetos/>}/>
+                <Route path="/projetos/cadastro" element={<ManipulateProject/>}/>
+                <Route path="/project/atualizar" element={<ManipulateProject/>}/>
+                <Route path="/projetos/lista" element={<ListProjects/>}/>
             </Routes>
         </Layout>
     );

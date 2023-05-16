@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import {Formik, Form} from "formik";
+// import {Formik, Form} from "formik";
 import * as Yup from "yup";
 
 import styles from "./Login.module.css";
@@ -9,6 +9,9 @@ import styles from "./Login.module.css";
 import Input from "../../components/forms/Input";
 import { login as loginService } from "../../services/authService";
 import { useAuth } from "../../contexts/AuthContext";
+import Form from "../../components/forms/Form";
+import Button from "../../components/common/Button";
+import Title from "../../components/common/Title";
 
 interface LoginValues {
     email: string;
@@ -49,37 +52,36 @@ const Login = () => {
 
     return (
     <div className={styles.loginWrapper}>
-        <div className={styles.formWrapper}>
-            <Formik
-              initialValues={initialValues}
+
+        <Form initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={onSubmit}
             >
                 {({errors, touched}) => (
-                    <Form className={styles.form}>
-                        <h1 className={styles.title}>Wicthor Dev</h1>
+                    <>
+                      <Title>Wicthor Dev</Title>
 
-                        <Input
-                           label="Email"
-                           name="email"
-                           type="email"
-                           errors={errors.email}
-                           touched={touched.email}
-                        />
+                      <Input
+                       label="Email"
+                       name="email"
+                       type="email"
+                       errors={errors.email}
+                       touched={touched.email}
+                      />
 
-                        <Input
-                           label="Password"
-                           name="password"
-                           type="password"
-                           errors={errors.password}
-                           touched={touched.password}
-                        />
+                       <Input
+                       label="Password"
+                       name="password"
+                       type="password"
+                       errors={errors.password}
+                       touched={touched.password}
+                      />
 
-                        <button type="submit" className={styles.button}>Login</button>
-                    </Form>
+                      <Button type="submit">Login</Button>
+                      
+                    </>
                 )}
-            </Formik>
-        </div>
+        </Form>
     </div>
     );
 };

@@ -9,6 +9,7 @@ import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import { Informacoes, updateInformacoes, getInformacoes } from "../../../services/informacoesService";
 import CardInformacoes from "./CardInformacoes/CardInformacoes";
+import Button from "../../../components/common/Button";
 
 
 const validationSchema = Yup.object().shape({
@@ -118,14 +119,15 @@ const CadastrarInformacoes: React.FC = () => {
                     )}
                 </Formik>
 
+            {informacoes &&
+                Object.entries(informacoes). some(
+                    ([key, value]) => key !== "id" && value.trim() !== ""
+                ) && (
                 <div className={styles.cardContainer}>
                     <CardInformacoes informacoes={informacoes}/>
-                    <button 
-                    type="button" 
-                    onClick={handleDelete} 
-                    className={`${styles.button} ${styles.deleteButton}`}>Deletar
-                    </button>
+                    <Button onClick={handleDelete} red={true}>Deletar</Button>
                 </div>
+                )}
             </div>
         </main>
     );
