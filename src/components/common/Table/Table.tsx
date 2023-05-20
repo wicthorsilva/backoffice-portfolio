@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./Table.module.css";
 import Button from "../Button";
+import ButtonIcon from "../ButtonIcon";
 
 export interface Column<T> {
     header: string;
@@ -39,8 +40,10 @@ export const Table = <T,>({columns, data, handleEdit, handleDelete}: TableProps<
                         ))}
                         {(handleEdit || handleDelete) && (
                             <td className={styles.td}>
-                                {handleEdit && <Button onClick={() => handleEdit(item)}>Editar</Button>}
-                                {handleDelete && <Button onClick={() => handleDelete(item)} red={true}>Excluir</Button>}
+                                {handleEdit && <ButtonIcon onClick={() => handleEdit(item)}><img width="30" height="30" src="https://img.icons8.com/ios/50/create-new.png" alt="create-new"/></ButtonIcon>}
+
+                                
+                                {handleDelete && <ButtonIcon onClick={() => handleDelete(item)} red={true}>< img  width = " 30 "  height = " 30 "  src = " https://img.icons8.com/ios-glyphs/30/filled-trash.png "  alt = " fill-trash " /></ButtonIcon>}
                             </td>
                         )}
                     </tr>

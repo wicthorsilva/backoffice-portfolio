@@ -1,0 +1,28 @@
+.button {
+    display: inline-block;
+    /* padding: 0.5rem 1rem; */
+    font-size: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #d15eff;
+}
+
+.redButton {
+    background-color: #ffffff;
+    /* width: 120px; */
+    margin: 0 auto;
+}
+
+.redButton:hover {
+    background-color: #ff5a5a;
+}

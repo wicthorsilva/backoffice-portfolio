@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./ListaExperiencia.module.css";
 import {Experiencia, deleteExperiencia, getExperiencias, updateExperiencia } from "../../../services/experienciaService";
-import Button from "../../../components/common/Button";
+
+import ButtonIcon from "../../../components/common/ButtonIcon";
 
 
 
@@ -66,8 +67,10 @@ const ListaExperiencia: React.FC = () => {
                         <td>{experiencia.anoFim}</td>
                         <td>
                     
-                            <Button onClick={() => handleEdit}>Editar</Button>
-                            <Button onClick={() => handleDelete} red={true}>Deletar</Button>
+                            <ButtonIcon onClick={() => handleEdit}><img width="30" height="30" src="https://img.icons8.com/ios/50/create-new.png" alt="create-new"/></ButtonIcon>
+
+                            <ButtonIcon onClick={() => handleDelete} red={true}>< img  width = " 30 "  height = " 30 "  src = " https://img.icons8.com/ios-glyphs/30/filled-trash.png "  alt = " fill-trash " /></ButtonIcon>
+                            
                         </td>
                     </tr>
                 ))}
