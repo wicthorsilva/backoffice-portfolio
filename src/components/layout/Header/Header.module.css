@@ -1,15 +1,17 @@
 .header{
-    background-color: #7700a5;
+    background-color: #8a2be2;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0;
 }
 
 .logo{
     margin-right: 1rem;
     margin-left: .5rem;
-    font-size: 1rem;
     font-weight: bold;
     justify-content: space-evenly;
 }
