@@ -11,6 +11,7 @@
     border: none;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    width: 120px;
 }
 
 .button:hover {
@@ -19,7 +20,7 @@
 
 .redButton {
     background-color: #ff3333;
-    width: 50%;
+    width: 120px;
     margin: 0 auto;
 }
 

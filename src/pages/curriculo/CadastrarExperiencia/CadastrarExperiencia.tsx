@@ -10,6 +10,7 @@ import Textarea from "../../../components/forms/Textarea/Textarea";
 import Select from "../../../components/forms/Select";
 
 import { Experiencia, createOrUpdateExperiencia } from "../../../services/experienciaService";
+import Button from "../../../components/common/Button";
 
 const CadastrarExperiencia: React.FC = () => {
 
@@ -93,7 +94,7 @@ const CadastrarExperiencia: React.FC = () => {
                           touched={touched.descricao}
                         />
 
-                        <button type="submit" className={styles.button}>Salvar</button>
+                        <Button type="submit">Salvar</Button>
                     </Form>
                 )}
 

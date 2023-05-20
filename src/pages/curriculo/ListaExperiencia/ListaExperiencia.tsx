@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./ListaExperiencia.module.css";
 import {Experiencia, deleteExperiencia, getExperiencias, updateExperiencia } from "../../../services/experienciaService";
+import Button from "../../../components/common/Button";
 
 
 
@@ -64,8 +65,9 @@ const ListaExperiencia: React.FC = () => {
                         <td>{experiencia.anoInicio}</td>
                         <td>{experiencia.anoFim}</td>
                         <td>
-                            <button onClick={()=> handleEdit(experiencia)}>Editar</button>
-                            <button onClick={()=> handleDelete(experiencia.id)}>Excluir</button>
+                    
+                            <Button onClick={() => handleEdit}>Editar</Button>
+                            <Button onClick={() => handleDelete} red={true}>Deletar</Button>
                         </td>
                     </tr>
                 ))}

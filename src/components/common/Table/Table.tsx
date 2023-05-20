@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./Table.module.css";
+import Button from "../Button";
 
 export interface Column<T> {
     header: string;
@@ -38,8 +39,8 @@ export const Table = <T,>({columns, data, handleEdit, handleDelete}: TableProps<
                         ))}
                         {(handleEdit || handleDelete) && (
                             <td className={styles.td}>
-                                {handleEdit && <button onClick={() => handleEdit(item)}>Editar</button>}
-                                {handleDelete && <button onClick={() => handleDelete(item)}>Excluir</button>}
+                                {handleEdit && <Button onClick={() => handleEdit(item)}>Editar</Button>}
+                                {handleDelete && <Button onClick={() => handleDelete(item)} red={true}>Excluir</Button>}
                             </td>
                         )}
                     </tr>
