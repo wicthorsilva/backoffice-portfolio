@@ -9,10 +9,6 @@
     justify-content: center;
 }
 
-.button:hover {
-    background-color: #5a017e;
-}
-
 .errorMsg {
     color: #ff6666;
     font-size: 14px;

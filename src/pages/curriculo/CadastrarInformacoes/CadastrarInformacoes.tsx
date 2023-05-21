@@ -10,6 +10,7 @@ import Textarea from "../../../components/forms/Textarea";
 import { Informacoes, updateInformacoes, getInformacoes } from "../../../services/informacoesService";
 import CardInformacoes from "./CardInformacoes/CardInformacoes";
 import Button from "../../../components/common/Button";
+import Title from "../../../components/common/Title";
 
 
 const validationSchema = Yup.object().shape({
@@ -73,7 +74,7 @@ const CadastrarInformacoes: React.FC = () => {
     return (
         <main>
 
-            <h1 className={styles.titlePage}>Cadastro de Informações</h1>
+            <Title>Cadastro de informações</Title>
 
             <div className={styles.formWrapper}>
 

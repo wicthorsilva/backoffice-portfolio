@@ -9,6 +9,11 @@
     top: 0;
 }
 
+.active {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .logo{
     margin-right: 1rem;
     margin-left: .5rem;

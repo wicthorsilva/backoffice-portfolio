@@ -11,6 +11,7 @@ import {
     deleteProject,
     getProjects
 } from "../../../services/projectsService";
+import Title from "../../../components/common/Title";
 
 
 
@@ -54,12 +55,15 @@ const ListProjects: React.FC = () => {
     ];
 
     return (
-        <Table 
-           columns={columns}
-           data={projects}
-           handleEdit={handleEdit}       
-           handleDelete={handleDelete}       
-        />
+        <main>
+            <Title>Lista de Projetos</Title>
+            <Table 
+            columns={columns}
+            data={projects}
+            handleEdit={handleEdit}       
+            handleDelete={handleDelete}       
+            />
+        </main>
     );
 };
 

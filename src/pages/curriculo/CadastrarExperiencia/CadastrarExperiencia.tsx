@@ -11,6 +11,7 @@ import Select from "../../../components/forms/Select";
 
 import { Experiencia, createOrUpdateExperiencia } from "../../../services/experienciaService";
 import Button from "../../../components/common/Button";
+import Title from "../../../components/common/Title";
 
 const CadastrarExperiencia: React.FC = () => {
 
@@ -50,11 +51,16 @@ const CadastrarExperiencia: React.FC = () => {
 
     return (
         <div className={styles.formWrapper}>
+                        {
+                        !experiencia ? 
+                           <Title>Cadastrar experiência</Title>
+                           :
+                           <Title>Atualizar experiência</Title>
+                    }
             <Formik initialValues={experiencia || initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
             >
                 {({ errors, touched }) => (
                     <Form className={styles.form}>
-                        <h2 className={styles.title}>Cadastro de Experiência</h2>
                         <Input
                           label="Título"
                           name="titulo"

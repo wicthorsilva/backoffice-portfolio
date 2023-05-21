@@ -19,7 +19,7 @@
     {
       "id": 1,
       "titulo": "Desenvolvedor Front-End",
-      "descricao": "Ainda Junior",
+      "descricao": "Junior",
       "tipo": "profissional",
       "anoInicio": "2022",
       "anoFim": "2023"
@@ -35,16 +35,16 @@
   ],
   "projects": [
     {
-      "link": "https://wicthorsilva.github.io/project-barberlup/",
-      "image": "https://picsum.photos/id/26/300/201",
-      "title": "Barber-Lup",
-      "id": 1
-    },
-    {
       "link": "https://wicthorsilva.github.io/landingpage/",
       "image": "https://picsum.photos/id/9/300/202",
       "title": "Landingpage",
       "id": 2
+    },
+    {
+      "link": "https://wicthorsilva.github.io/project-barberlup/",
+      "image": "https://picsum.photos/id/26/300/201",
+      "title": "Barber-Lup",
+      "id": 3
     }
   ]
 }

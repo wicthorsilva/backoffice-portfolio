@@ -6,6 +6,7 @@ import styles from "./ListaExperiencia.module.css";
 import {Experiencia, deleteExperiencia, getExperiencias, updateExperiencia } from "../../../services/experienciaService";
 
 import ButtonIcon from "../../../components/common/ButtonIcon";
+import Title from "../../../components/common/Title";
 
 
 
@@ -46,36 +47,39 @@ const ListaExperiencia: React.FC = () => {
     };
 
     return (
-        <table className={styles.table}>
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Tipo</th>
-                    <th>Ano Início</th>
-                    <th>Ano Fim</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {experiencia.map((experiencia, index)=> (
-                    <tr key={index}>
-                        <td>{experiencia.titulo}</td>
-                        <td>{experiencia.descricao}</td>
-                        <td>{experiencia.tipo}</td>
-                        <td>{experiencia.anoInicio}</td>
-                        <td>{experiencia.anoFim}</td>
-                        <td>
-                    
-                            <ButtonIcon onClick={() => handleEdit}><img width="30" height="30" src="https://img.icons8.com/ios/50/create-new.png" alt="create-new"/></ButtonIcon>
-
-                            <ButtonIcon onClick={() => handleDelete} red={true}>< img  width = " 30 "  height = " 30 "  src = " https://img.icons8.com/ios-glyphs/30/filled-trash.png "  alt = " fill-trash " /></ButtonIcon>
-                            
-                        </td>
+        <main>
+            <Title>Lista de experiência</Title>
+            <table className={styles.table}>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Ano Início</th>
+                        <th>Ano Fim</th>
+                        <th>Ações</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {experiencia.map((experiencia, index)=> (
+                        <tr key={index}>
+                            <td>{experiencia.titulo}</td>
+                            <td>{experiencia.descricao}</td>
+                            <td>{experiencia.tipo}</td>
+                            <td>{experiencia.anoInicio}</td>
+                            <td>{experiencia.anoFim}</td>
+                            <td>
+                        
+                                <ButtonIcon onClick={() => handleEdit(experiencia)}><img width="30" height="30" src="https://img.icons8.com/ios/50/create-new.png" alt="create-new"/></ButtonIcon>
+
+                                <ButtonIcon onClick={() => handleDelete(experiencia.id)} red={true}>< img  width = " 30 "  height = " 30 "  src = " https://img.icons8.com/ios-glyphs/30/filled-trash.png "  alt = " fill-trash " /></ButtonIcon>
+                                
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </main>
     );
 };
 

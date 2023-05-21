@@ -42,6 +42,13 @@ const ManipulateProject = () => {
     };
 
     return(
+        <main>
+            {
+                        !projects ? 
+                           <Title>Cadastrar Projeto</Title>
+                           :
+                           <Title>Atualizar Projeto</Title>
+                    }
         <Form
           initialValues={projects || initialValues}
           validationSchema={validationSchema}
@@ -50,12 +57,7 @@ const ManipulateProject = () => {
                 {({errors, touched}) => (
                 
                     <>
-                    {
-                        !projects ? 
-                           <Title>Cadastrar Projeto</Title>
-                           :
-                           <Title>Atualizar Projeto</Title>
-                    }
+                    
 
                     <Input
                      label="Título"
@@ -82,6 +84,7 @@ const ManipulateProject = () => {
                     </>
                 )}
         </Form>
+        </main>
     );
 };
 
