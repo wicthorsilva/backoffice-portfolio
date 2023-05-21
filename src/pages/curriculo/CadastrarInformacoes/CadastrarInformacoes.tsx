@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 
-import styles from "./Cadastrarinformacoes.module.css";
+import styles from "./CadastrarInformacoes.module.css";
 
 import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
 import { Informacoes, updateInformacoes, getInformacoes } from "../../../services/informacoesService";
-import CardInformacoes from "./CardInformacoes/CardInformacoes";
+import CardInformacoes from "./CardInformacoes";
 import Button from "../../../components/common/Button";
 import Title from "../../../components/common/Title";
 
