@@ -3,11 +3,11 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    width: 20vw;
+    width: 18vw;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: #8a2be2;
-    box-shadow: 0 0 0.5rem #442363;
+    background-color: #7B5DFF;
+    box-shadow: 0 0 0.5rem #5c3bff;
     transition: all 0.3s ease-in-out;
     color: #ffffff;
     margin: 2rem;
@@ -17,7 +17,7 @@
     text-align: center;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 100px;
+    height: 90px;
     width: 100%;
     font-size: 40px;
 }
