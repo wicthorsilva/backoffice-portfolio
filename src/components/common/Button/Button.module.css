@@ -6,7 +6,7 @@
     text-align: center;
     text-decoration: none;
     color: #fff;
-    background-color: #8a2be2;
+    background-color: #7B5DFF;
     border-radius: 0.25rem;
     border: none;
     cursor: pointer;
@@ -15,7 +15,7 @@
 }
 
 .button:hover {
-    background-color: #5a017e;
+    background-color: #5c3bff;
 }
 
 .redButton {
