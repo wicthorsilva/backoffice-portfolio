@@ -24,16 +24,16 @@ const CadastrarExperiencia: React.FC = () => {
         titulo: "",
         descricao: "",
         tipo: "",
-        anoInicio: "",
-        anoFim: "",
+        ano_inicio: "",
+        ano_fim: "",
     };
 
     const validationSchema = Yup.object().shape({
         titulo: Yup.string().required('Campo obrigatório'),
         descricao: Yup.string(),
         tipo: Yup.string().required('Campo obrigatório'),
-        anoInicio: Yup.number().required('Campo obrigatório').typeError("Digite nùmeros"),
-        anoFim: Yup.number().required('Campo obrigatório') .typeError("Digite nùmeros"),
+        ano_inicio: Yup.number().required('Campo obrigatório').typeError("Digite nùmeros"),
+        ano_fim: Yup.number().required('Campo obrigatório') .typeError("Digite nùmeros"),
     });
 
     const onSubmit = async (values: Experiencia, {resetForm}: {resetForm: () => void}) => {
@@ -70,16 +70,16 @@ const CadastrarExperiencia: React.FC = () => {
 
                         <Input
                            label="Ano de Inicio"
-                           name="anoInicio"
-                           errors= {errors.anoInicio}
-                          touched={touched.anoInicio}
+                           name="ano_inicio"
+                           errors= {errors.ano_inicio}
+                          touched={touched.ano_inicio}
                         />
 
                         <Input
                            label="Ano Final"
-                           name="anoFim"
-                           errors= {errors.anoFim}
-                          touched={touched.anoFim}
+                           name="ano_fim"
+                           errors= {errors.ano_fim}
+                          touched={touched.ano_fim}
                         />
 
                         <Select

@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Table.module.css";
-import Button from "../Button";
+
 import ButtonIcon from "../ButtonIcon";
 
 export interface Column<T> {

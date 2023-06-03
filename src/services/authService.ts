@@ -1,11 +1,11 @@
-import {User, getUserByEmail } from "./userService";
+import api from "./api";
 
-export async function login(email: string, password: string): Promise<User> {
-    const user = await getUserByEmail (email);
+export interface LoginData {
+    email: string;
+    password: string;
+}
 
-    if (user && user.password === password) {
-        return user;
-    } else {
-        throw new Error("Email ou senha inválido!");
-    }
+export const login = async (loginData: LoginData): Promise<LoginData> => {
+    const response = await api.post<LoginData>("/auth/login", loginData)
+    return response.data;
 }

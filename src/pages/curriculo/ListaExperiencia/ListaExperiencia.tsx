@@ -7,6 +7,7 @@ import {Experiencia, deleteExperiencia, getExperiencias, updateExperiencia } fro
 
 import ButtonIcon from "../../../components/common/ButtonIcon";
 import Title from "../../../components/common/Title";
+import { Column, Table } from "../../../components/common/Table";
 
 
 
@@ -14,7 +15,7 @@ const ListaExperiencia: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const [experiencia, setExperiencia] = React.useState<Experiencia[]>([]);
+    const [experiencias, setExperiencia] = React.useState<Experiencia[]>([]);
 
     const fetchExperiencias = async () => {
         try {
@@ -30,13 +31,13 @@ const ListaExperiencia: React.FC = () => {
     }, []);
 
     const handleEdit = async (experiencia: Experiencia) => {
-        navigate ("/curriculo/experiencia/cadastro", {state: experiencia})
+        navigate ("/curriculo/experiencia/atualizar", {state: experiencia})
         // lógica para edição "index"
     };
 
-    const handleDelete = async(id: number) => {
+    const handleDelete = async(experiencia: Experiencia) => {
         try {
-            await deleteExperiencia(id);
+            await deleteExperiencia(experiencia.id);
             fetchExperiencias();
             alert ("Experiência excluida com sucesso")
         } catch (error) {
@@ -46,39 +47,24 @@ const ListaExperiencia: React.FC = () => {
         //logica;
     };
 
+    const columns: Column<Experiencia>[] = [
+        {header: "Título", accessor: "titulo"},
+        {header: "Descrição", accessor: "descricao"},
+        {header: "Tipo", accessor: "tipo"},
+        {header: "Ano Início", accessor: "ano_inicio"},
+        {header: "Ano Fim", accessor: "ano_fim"},
+
+    ];
+
     return (
         <main>
             <Title>Lista de experiência</Title>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Tipo</th>
-                        <th>Ano Início</th>
-                        <th>Ano Fim</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {experiencia.map((experiencia, index)=> (
-                        <tr key={index}>
-                            <td>{experiencia.titulo}</td>
-                            <td>{experiencia.descricao}</td>
-                            <td>{experiencia.tipo}</td>
-                            <td>{experiencia.anoInicio}</td>
-                            <td>{experiencia.anoFim}</td>
-                            <td>
-                        
-                                <ButtonIcon onClick={() => handleEdit(experiencia)}><img width="30" height="30" src="https://img.icons8.com/ios/50/create-new.png" alt="create-new"/></ButtonIcon>
-
-                                <ButtonIcon onClick={() => handleDelete(experiencia.id)} red={true}>< img  width = " 30 "  height = " 30 "  src = " https://img.icons8.com/ios-glyphs/30/filled-trash.png "  alt = " fill-trash " /></ButtonIcon>
-                                
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Table
+              columns={columns}
+              data={experiencias}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
         </main>
     );
 };

@@ -1,43 +1,54 @@
 import React, { useEffect, useState } from "react";
 
-import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
+import {AxiosError} from "axios";
 
 import styles from "./CadastrarInformacoes.module.css";
 
+import Form from "../../../components/forms/Form/Form";
 import Input from "../../../components/forms/Input";
 import Textarea from "../../../components/forms/Textarea";
-import { Informacoes, updateInformacoes, getInformacoes } from "../../../services/informacoesService";
 import CardInformacoes from "./CardInformacoes";
 import Button from "../../../components/common/Button";
 import Title from "../../../components/common/Title";
+import {
+    Informacoes,
+    getInformacoes,
+    deleteInformacoes,
+    createOrUpdateInformacoes
+} from "../../../services/informacoesService"
 
-
-const validationSchema = Yup.object().shape({
-    foto: Yup.string().required('Campo obrigatório'),
-    nome: Yup.string().required('Campo obrigatório'),
-    cargo: Yup.string().required('Campo obrigatório'),
-    // resumo: Yup.string().required('Campo obrigatório'),
-});
 
 const CadastrarInformacoes: React.FC = () => {
 
-    const [informacoes, setInformacoes] = useState<Informacoes>({} as Informacoes);
+    const [informacoes, setInformacoes] = useState<Informacoes>();
 
     const initialValues: Informacoes = {
-        id:1,
         foto: '',
         nome: '',
         cargo: '',
         resumo: '',
     };
 
+    const validationSchema = Yup.object().shape({
+        foto: Yup.string().required('Campo obrigatório'),
+        nome: Yup.string().required('Campo obrigatório'),
+        cargo: Yup.string().required('Campo obrigatório'),
+        resumo: Yup.string().required('Campo obrigatório'),
+    });
+
     const fetchInformacao = async () => {
         try {
             const informacao = await getInformacoes();
             setInformacoes(informacao);
         } catch (error) {
-            console.error('Erro ao buscar informações:', error);
+            if (error instanceof AxiosError){
+                if (error.response?.status !== 404){
+                    console.error('Erro ao buscar informações:', error);
+                }
+            } else {
+                console.error("Ocorreu um erro desconhecido ao buscar informações: ", error);
+            }
         }
     };
 
@@ -45,25 +56,21 @@ const CadastrarInformacoes: React.FC = () => {
         fetchInformacao();
     }, []);
 
-    const onSubmit = async (values: Informacoes, {resetForm}: {resetForm: () => void}) => {
+    const onSubmit = async (values: Informacoes) => {
         try {
-            await updateInformacoes(values);
+            await createOrUpdateInformacoes(values);
             setInformacoes(values);
-            console.log(values);
-        resetForm();
-        alert ('Formulário enviado com sucesso!');
-            
+            alert("Formulario enviado com sucesso!");
         } catch (error) {
-            console.error('Erro ao enviar o formulário:', error);
-            alert ('Ocorreu um erro ao enviar o formulário. Tente novamente.');
+            console.error("Erro ao enviar o formulário:", error);
+            alert("Ocorreu um erro ao enviar o formulario. Tente novamente.");
         }
-        
-    };
+    }
 
     const handleDelete = async () => {
         try {
-            await updateInformacoes(initialValues);
-            setInformacoes(initialValues);
+            await deleteInformacoes();
+            setInformacoes(undefined);
             alert('Informações deletadas com sucesso');
         } catch (error) {
             console.error('Erro ao deletar informações:', error);
@@ -79,11 +86,15 @@ const CadastrarInformacoes: React.FC = () => {
             <div className={styles.formWrapper}>
 
 
-                <Formik initialValues={informacoes} enableReinitialize={true} validationSchema={validationSchema} onSubmit={onSubmit}>
-                    {({errors, touched}) => (
-                    <Form className={styles.form}>
+                <Form 
+                initialValues={informacoes || initialValues} 
+                enableReinitialize={true} 
+                validationSchema={validationSchema} onSubmit={onSubmit}>
 
-                        <h2 className={styles.titleForm}>Informações Pessoais</h2>
+                    {({errors, touched}) => (
+                    
+                    <>
+                        <h2 className={styles.titleForm}>Informações</h2>
 
 
                         <Input
@@ -116,19 +127,16 @@ const CadastrarInformacoes: React.FC = () => {
 
                         <Button type="submit">Salvar</Button>
 
-                    </Form>
+                        </>
                     )}
-                </Formik>
+                </Form>
 
-            {informacoes &&
-                Object.entries(informacoes). some(
-                    ([key, value]) => key !== "id" && value.trim() !== ""
-                ) && (
+             {informacoes &&
                 <div className={styles.cardContainer}>
                     <CardInformacoes informacoes={informacoes}/>
                     <Button onClick={handleDelete} red={true}>Deletar</Button>
                 </div>
-                )}
+                }
             </div>
         </main>
     );
