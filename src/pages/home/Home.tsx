@@ -14,48 +14,48 @@ import { Project, getProjects } from "../../services/projectsService";
 
 const Home= () => {
 
-    // const [experienciasAcademicas, setExperienciasAcademicas] = useState<Experiencia[]>([]);
-    // const [experienciasProfissionais, setExperienciasProfissionais] = useState<Experiencia[]>([]);
-    // const [projects, setProjects] = useState<Project[]>([]);
+    const [experienciasAcademicas, setExperienciasAcademicas] = useState<Experiencia[]>([]);
+    const [experienciasProfissionais, setExperienciasProfissionais] = useState<Experiencia[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
 
-    // const fetchExperienciasAcademicas = async () => {
-    //     try {
-    //         const response = await getExperienciasByTipo("academico");
-    //         setExperienciasAcademicas(response);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const fetchExperienciasAcademicas = async () => {
+        try {
+            const response = await getExperienciasByTipo("academica");
+            setExperienciasAcademicas(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // const fetchExperienciasProfissionais = async () => {
-    //     try {
-    //         const response = await getExperienciasByTipo("profissional");
-    //         setExperienciasProfissionais(response);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const fetchExperienciasProfissionais = async () => {
+        try {
+            const response = await getExperienciasByTipo("profissional");
+            setExperienciasProfissionais(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // const fetchProjects = async () => {
-    //     try {
-    //         const response = await getProjects();
-    //         setProjects(response);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const fetchProjects = async () => {
+        try {
+            const response = await getProjects();
+            setProjects(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // useEffect(() => {
-    //     fetchExperienciasAcademicas();
-    //     fetchExperienciasProfissionais();
-    //     fetchProjects();
-    // }, []);
+    useEffect(() => {
+        fetchExperienciasAcademicas();
+        fetchExperienciasProfissionais();
+        fetchProjects();
+    }, []);
 
     return (
         <main className={styles.container}>
             <Title>Bem vindo ao meu sistema de backoffice  \ ^_^ /</Title>
             <p>Dashboard do site</p>
-            {/* <div className={styles.infoBoxContainer}>
+            <div className={styles.infoBoxContainer}>
                 <InfoBox
                     title="Experiências Acadêmicas"
                     value={experienciasAcademicas.length}
@@ -71,7 +71,7 @@ const Home= () => {
                     value={projects.length}
                     
                 />
-            </div> */}
+            </div>
         </main>
     );
 };
