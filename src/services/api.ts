@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = "https://sitepessoal-api.onrender.com/api/";
 
 const api = axios.create({
   baseURL: apiUrl,
