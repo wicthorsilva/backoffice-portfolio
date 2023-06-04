@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import styles from "./Login.module.css";
 
 import Input from "../../components/forms/Input";
-import { LoginData, login as loginService } from "../../services/authService";
+import { User, login as loginService } from "../../services/authService";
 import { useAuth } from "../../contexts/AuthContext";
 import Form from "../../components/forms/Form";
 import Button from "../../components/common/Button";
@@ -19,7 +19,7 @@ const Login = () => {
     const navigate = useNavigate();
     const {login} = useAuth();
 
-    const initialValues: LoginData ={
+    const initialValues: User ={
         email:"",
         password:"",
     };
@@ -33,7 +33,7 @@ const Login = () => {
            .required("Senha obrigatória"),
     });
 
-    const onSubmit = async (values: LoginData) => {
+    const onSubmit = async (values: User) => {
         try {
             const user = await loginService(values);
             login(user);
