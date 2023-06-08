@@ -30,8 +30,8 @@ const ListaExperiencia: React.FC = () => {
         fetchExperiencias();
     }, []);
 
-    const handleEdit = async (experiencia: Experiencia) => {
-        navigate ("/curriculo/experiencia/atualizar", {state: experiencia})
+    const handleEdit = (experiencia: Experiencia) => {
+          navigate ("/curriculo/experiencia/atualizar", {state: experiencia});
         // lógica para edição "index"
     };
 
