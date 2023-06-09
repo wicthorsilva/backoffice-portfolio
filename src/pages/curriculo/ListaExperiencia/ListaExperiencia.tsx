@@ -30,7 +30,7 @@ const ListaExperiencia: React.FC = () => {
         fetchExperiencias();
     }, []);
 
-    const handleEdit = (experiencia: Experiencia) => {
+    const handleEdit = (experiencia: Experiencia): void => {
           navigate ("/curriculo/experiencia/atualizar", {state: experiencia});
         // lógica para edição "index"
     };

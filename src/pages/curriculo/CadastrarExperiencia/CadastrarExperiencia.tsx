@@ -49,8 +49,13 @@ const CadastrarExperiencia: React.FC = () => {
     };
 
     return (
-        
-                       
+        <main>
+                {
+                        !experiencia ? 
+                           <Title>Cadastrar experiência</Title>
+                           :
+                           <Title>Atualizar experiência</Title>
+                    }       
             <Form
             
             initialValues={experiencia || initialValues} validationSchema={validationSchema} 
@@ -60,12 +65,7 @@ const CadastrarExperiencia: React.FC = () => {
                 {({ errors, touched }) => (
 
                     <>
-                    {
-                        !experiencia ? 
-                           <Title>Cadastrar experiência</Title>
-                           :
-                           <Title>Atualizar experiência</Title>
-                    }
+                    
 
                         <Input
                           label="Título"
@@ -112,7 +112,7 @@ const CadastrarExperiencia: React.FC = () => {
                 )}
 
                  </Form>
-            
+                 </main>
     )
 }
 
