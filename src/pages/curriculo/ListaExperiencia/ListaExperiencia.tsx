@@ -31,7 +31,7 @@ const ListaExperiencia: React.FC = () => {
     }, []);
 
     const handleEdit = (experiencia: Experiencia): void => {
-          navigate ("/curriculo/experiencia/atualizar", {state: experiencia});
+          navigate ("/curriculo/experiencia/cadastro", {state: experiencia});
         // lógica para edição "index"
     };
 
