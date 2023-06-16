@@ -20,7 +20,7 @@ const Home= () => {
 
     const fetchExperienciasAcademicas = async () => {
         try {
-            const response = await getExperienciasByTipo("academico");
+            const response = await getExperienciasByTipo(`academico`);
             setExperienciasAcademicas(response);
         } catch (error) {
             console.log(error);
@@ -29,7 +29,7 @@ const Home= () => {
 
     const fetchExperienciasProfissionais = async () => {
         try {
-            const response = await getExperienciasByTipo("profissional");
+            const response = await getExperienciasByTipo(`profissional`);
             setExperienciasProfissionais(response);
         } catch (error) {
             console.log(error);
