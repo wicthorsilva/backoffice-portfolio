@@ -33,7 +33,7 @@ export const Table = <T,>({columns, data, handleEdit, handleDelete}: TableProps<
                         {columns.map((column, columnIndex) => (
                             column.accessor == "image" ?
                             <td key={columnIndex} className={styles.td}>
-                                <img src={item[column.accessor] as string} alt="Imagem" />
+                                <img className={styles.imgProject} src={item[column.accessor] as string} alt="Imagem" />
                             </td>
                             :
                             <td key={columnIndex} className={styles.td}>{item[column.accessor]}</td>

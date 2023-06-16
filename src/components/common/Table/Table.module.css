@@ -12,6 +12,11 @@
     text-align: left;
 }
 
+.imgProject{
+    width: 350px;
+    height: 200px;
+}
+
 .th {
     background-color: #f2f2f2;
 }
